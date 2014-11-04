@@ -9,7 +9,7 @@ require_once dirname(__FILE__).'/class/base_classes.php';
  * @author tobyb
  *
  */
-class CS_REST_General extends CS_REST_Wrapper_Base {
+class CSRESTGeneral extends CS_REST_Wrapper_Base {
 
     /**
      * Get the authorization URL for your application, given the application's
@@ -87,7 +87,7 @@ class CS_REST_General extends CS_REST_Wrapper_Base {
      * @param $transport The transport to use. Used for dependency injection
      * @access public
      */
-    function CS_REST_Wrapper_Base(
+    function __construct(
         $auth_details,
         $protocol = 'https',
         $debug_level = CS_REST_LOG_NONE,
@@ -95,7 +95,7 @@ class CS_REST_General extends CS_REST_Wrapper_Base {
         $log = NULL,
         $serialiser = NULL,
         $transport = NULL) {
-        $this->CS_REST_Wrapper_Base($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);        
+        parent::__construct($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);        
     }
 
     /**

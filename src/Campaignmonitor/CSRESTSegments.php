@@ -8,7 +8,7 @@ require_once dirname(__FILE__).'/class/base_classes.php';
  * @author tobyb
  *
  */
-class CS_REST_Segments extends CS_REST_Wrapper_Base {
+class CSRESTSegments extends CS_REST_Wrapper_Base {
 
     /**
      * The base route of the lists resource.

@@ -1,4 +1,5 @@
 <?php
+namespace Campaignmonitor;
 require_once dirname(__FILE__).'/class/base_classes.php';
 
 /**
@@ -8,7 +9,7 @@ require_once dirname(__FILE__).'/class/base_classes.php';
  * @author pauld
  *
  */
-class CS_REST_Administrators extends CS_REST_Wrapper_Base {
+class CSRESTAdministrators extends CS_REST_Wrapper_Base {
 
     /**
      * The base route of the people resource.
@@ -36,7 +37,7 @@ class CS_REST_Administrators extends CS_REST_Wrapper_Base {
      * @param $transport The transport to use. Used for dependency injection
      * @access public
      */
-    function CS_REST_Administrators (    
+    function __construct (    
     $auth_details,
     $protocol = 'https',
     $debug_level = CS_REST_LOG_NONE,
@@ -45,7 +46,7 @@ class CS_REST_Administrators extends CS_REST_Wrapper_Base {
     $serialiser = NULL,
     $transport = NULL) {
         	
-        $this->CS_REST_Wrapper_Base($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);
+        parent::__construct($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);
         $this->_admins_base_route = $this->_base_route.'admins';
     }
 

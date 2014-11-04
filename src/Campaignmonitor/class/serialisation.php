@@ -1,4 +1,5 @@
 <?php
+namespace Campaignmonitor;
 
 if (!class_exists('Services_JSON', false)) {
     require_once dirname(__FILE__).'/services_json.php';
@@ -16,7 +17,7 @@ class CS_REST_BaseSerialiser {
 
     var $_log;
     
-    function CS_REST_BaseSerialiser($log) { 
+    function __construct($log) { 
         $this->_log = $log;
     }
     
@@ -47,7 +48,7 @@ class CS_REST_BaseSerialiser {
 }
 
 class CS_REST_DoNothingSerialiser extends CS_REST_BaseSerialiser {
-    function CS_REST_DoNothingSerialiser() {}
+    function __construct() {}
     function get_type() { return 'do_nothing'; }
     function serialise($data) { return $data; }
     function deserialise($text) {
@@ -59,8 +60,8 @@ class CS_REST_DoNothingSerialiser extends CS_REST_BaseSerialiser {
 
 class CS_REST_NativeJsonSerialiser extends CS_REST_BaseSerialiser {
 
-    function CS_REST_NativeJsonSerialiser($log) {
-        $this->CS_REST_BaseSerialiser($log);
+    function __construct($log) {
+        parent::__construct($log);
     }
 
     function get_format() {
@@ -99,8 +100,8 @@ class CS_REST_ServicesJsonSerialiser extends CS_REST_BaseSerialiser {
     
     var $_serialiser;
     
-    function CS_REST_ServicesJsonSerialiser($log) {
-        $this->CS_REST_BaseSerialiser($log);
+    function __construct($log) {
+        parent::__construct($log);
         $this->_serialiser = new Services_JSON();
     }
 

@@ -1,4 +1,5 @@
 <?php
+namespace Campaignmonitor;
 require_once dirname(__FILE__).'/class/base_classes.php';
 
 define('CS_REST_CUSTOM_FIELD_TYPE_TEXT', 'Text');
@@ -22,7 +23,7 @@ define('CS_REST_LIST_UNSUBSCRIBE_SETTING_ONLY_THIS_LIST', 'OnlyThisList');
  * @author tobyb
  *
  */
-class CS_REST_Lists extends CS_REST_Wrapper_Base {
+class CSRESTLists extends CS_REST_Wrapper_Base {
 
     /**
      * The base route of the lists resource.
@@ -51,7 +52,7 @@ class CS_REST_Lists extends CS_REST_Wrapper_Base {
      * @param $transport The transport to use. Used for dependency injection
      * @access public
      */
-    function CS_REST_Lists (
+    function __construct (
     $list_id,
     $auth_details,
     $protocol = 'https',
@@ -61,7 +62,7 @@ class CS_REST_Lists extends CS_REST_Wrapper_Base {
     $serialiser = NULL,
     $transport = NULL) {
         	
-        $this->CS_REST_Wrapper_Base($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);
+        parent::__construct($auth_details, $protocol, $debug_level, $host, $log, $serialiser, $transport);
         $this->set_list_id($list_id);
     }
 

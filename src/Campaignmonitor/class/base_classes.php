@@ -1,8 +1,12 @@
 <?php
+namespace Campaignmonitor;
 
 require_once dirname(__FILE__).'/serialisation.php';
 require_once dirname(__FILE__).'/transport.php';
 require_once dirname(__FILE__).'/log.php';
+
+use Campaignmonitor\CS_REST_Log;
+use Campaignmonitor\CS_REST_DoNothingSerialiser;
 
 define('CS_REST_WRAPPER_VERSION', '4.0.2');
 define('CS_HOST', 'api.createsend.com');
@@ -127,7 +131,7 @@ class CS_REST_Wrapper_Base {
      * @param $transport The transport to use. Used for dependency injection
      * @access public
      */
-    function CS_REST_Wrapper_Base(
+    function __construct(            
         $auth_details,
         $protocol = 'https',
         $debug_level = CS_REST_LOG_NONE,
